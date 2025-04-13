@@ -9,8 +9,8 @@ const First = () => {
     const textRef = useRef(null);
     const isTextInView = useInView(textRef, { triggerOnce: true, threshold: 0.05 });
 
-    console.log("isTitleInView:", isTitleInView);
-    console.log("isTextInView:", isTextInView);
+    // console.log("isTitleInView:", isTitleInView);
+    // console.log("isTextInView:", isTextInView);
 
     return (
         <section className="first-section">

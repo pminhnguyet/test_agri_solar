@@ -1,0 +1,11 @@
+Model Information:
+* title:	solar_panel_3
+* source:	https://sketchfab.com/3d-models/solar-panel-3-85ea1c2570944d5098225acc2f54c013
+* author:	phamnguyetmt2003 (https://sketchfab.com/phamnguyetmt2003)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "solar_panel_3" (https://sketchfab.com/3d-models/solar-panel-3-85ea1c2570944d5098225acc2f54c013) by phamnguyetmt2003 (https://sketchfab.com/phamnguyetmt2003) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
