@@ -6,6 +6,7 @@ import Canvas3D from './components/Canvas3D'
 import gsap from "gsap";
 import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
 import First from './components/First';
+import Block11 from './components/Block11';
 
 // function App() {
 //   const [count, setCount] = useState(0)
@@ -152,6 +153,9 @@ function App() {
       <div className="section">
         <ThreeDModel />
       </div>
+      {/* <div className="section">
+        <Block11 />
+      </div> */}
       <div className="section" >
         <First />
       </div>
@@ -168,6 +172,10 @@ const sectionStyle = {
 };
 
 export default App;
+
+
+
+
 
 
 
