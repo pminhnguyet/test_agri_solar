@@ -1,0 +1,125 @@
+.frame7_1 {
+    height: 150vh;
+    padding: 40px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // margin-top: 200px;
+    gap: 10px;
+    // background: linear-gradient(180deg, #eef7e3, #d8ebc5);
+    background: linear-gradient(180deg, #b0d0a3, #a1c9a2);
+
+    .frame7_1_title {
+        text-align: center;
+        margin-bottom: 40px;
+
+        .frame7_1_title_first {
+
+            .font-primary {
+                font-family: 'Raleway', sans-serif;
+                color: #3A632F;
+                // color: #039c06;
+                font-size: 2.5rem;
+                font-weight: bold;
+            }
+
+            .font-secondary {
+                font-family: "Square Peg", cursive;
+                color: #FFC973;
+                font-weight: 90;
+                font-size: 70px;
+                -webkit-text-stroke: 2px #FFC973;
+            }
+        }
+
+        .frame7_1_subtitle {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            color: #3A632F;
+        }
+    }
+
+    // .frame7_1_description {
+    //     flex: 1;
+    //     // color: #000000;
+    //     color: #3A632F;
+    //     font-family: 'Raleway', sans-serif;
+    //     font-weight: 90;
+    //     font-size: 20px;
+
+    //     padding-top: 200px;
+    //     padding-left: 100px;
+    //     padding-right: 70px;
+    // }
+
+    // .frame7_1_description {
+    //     flex: 1;
+    //     color: #fff; // Màu chữ dễ đọc
+    //     font-family: 'Raleway', sans-serif;
+    //     font-weight: 400; // Tạo độ nhẹ nhàng cho chữ
+    //     font-size: 30px;
+    //     margin-top: 5%;
+    //     padding-left: 30px;
+    // }
+
+    .frame7_1_description {
+        color: #3A632F; // Màu chữ dễ đọc
+        font-family: 'Raleway', sans-serif;
+        font-weight: 400; // Tạo độ nhẹ nhàng cho chữ
+        font-size: 25px;
+        line-height: 1.6; // Tăng khoảng cách dòng cho dễ đọc
+        text-align: justify; // Căn đều chữ
+
+        max-width: 900px; // Giới hạn độ rộng của phần mô tả
+        margin-top: 10%;
+        padding: 40px 30px; // Thêm padding để nội dung không bị dính viền
+
+        background-color: rgba(255, 255, 255, 0.9); // Nền trắng nhẹ, dễ đọc
+        border-radius: 15px; // Viền bo tròn cho mềm mại
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Thêm bóng nhẹ để phần mô tả nổi bật
+
+        // Responsive design
+        @media (max-width: 768px) {
+            font-size: 18px; // Giảm kích thước chữ trên màn hình nhỏ
+            padding: 20px 15px; // Giảm padding trên màn hình nhỏ
+        }
+    }
+
+
+
+
+    .frame7_1-canvas-part {
+        flex: 1;
+        height: 100vh;
+        background-color: #f5ffea;
+        // background-color: #eef7e3;
+        border-top-left-radius: 322px;
+        border-top-right-radius: 322px;
+        overflow: hidden;
+
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+
+    .frame7_1_middle {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 40px;
+        width: 100%;
+        padding-left: 100px;
+        padding-right: 100px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+        }
+
+        .frame7_1_description,
+        .frame7_1-canvas-part {
+            flex: 1 1 45%;
+        }
+    }
+}
