@@ -1,0 +1,438 @@
+
+// @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&family=Homemade+Apple&family=Raleway:wght@400&display=swap');
+
+// .first-container {
+//   position: relative;
+//   width: 100vw;
+//   height: 100vh;
+//   background-color: #3a632f;
+//   overflow: hidden;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   transition: all 0.5s ease-in-out;
+// }
+
+// .panel {
+//   position: absolute;
+//   left: 0;
+//   width: 100%;
+//   background-color: #fff;
+//   z-index: 1;
+//   transform-origin: center;
+//   transition: height 4s ease;
+// }
+
+// .left-panel {
+//   top: 50%;
+//   height: 0;
+// }
+
+// .right-panel {
+//   bottom: 50%;
+//   height: 0;
+// }
+
+// .title-text {
+//   position: absolute;
+//   font-family: 'Bricolage Grotesque', sans-serif;
+//   color: #3a632f;
+//   font-size: 72px;
+//   opacity: 0;
+//   transition: opacity 2s ease;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   color: green; /* Text màu xanh */
+// }
+
+// .creative {
+//   opacity: 0;
+//   transition: opacity 2s ease;
+// }
+
+// .friendly {
+//   opacity: 0;
+//   transition: opacity 2s ease;
+// }
+
+// .background-block {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background-image: url('/src/assets/back1.png');
+//   background-size: cover;
+//   background-position: center;
+//   z-index: -1;
+//   opacity: 0;
+//   transition: opacity 4s ease;
+// }
+
+// .content {
+//   position: absolute;
+//   top: 20%;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   display: flex;
+//   justify-content: center;
+//   align-items: flex-start;
+//   flex-direction: column;
+//   color: white;
+//   opacity: 0;
+//   transition: opacity 2s ease;
+//   padding: 40px;
+//   z-index: 2;
+//   transform: translateY(50px);
+// }
+
+// .header {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   width: 100%;
+//   padding: 20px;
+
+//   .logo {
+//     height: 40px;
+//   }
+
+//   .menu-icon span {
+//     display: block;
+//     width: 20px;
+//     height: 3px;
+//     background-color: #fff;
+//     margin: 5px 0;
+//   }
+// }
+
+// .description {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   width: 100%;
+//   padding: 20px;
+
+//   .text {
+//     width: 50%;
+//     padding-right: 20px;
+//     opacity: 0;
+//     transform: translateY(30px);
+//     transition: opacity 1s ease, transform 1s ease;
+
+//     .headline {
+//       font-family: 'Homemade Apple', sans-serif;
+//       font-size: 60px;
+//       color: black;
+//       margin-bottom: 20px;
+//     }
+
+//     .subheadline {
+//       font-family: 'Bricolage Grotesque', sans-serif;
+//       font-size: 72px;
+//       color: #3a632f;
+//       margin-bottom: 20px;
+//     }
+
+//     .paragraph {
+//       font-family: 'Raleway', sans-serif;
+//       font-size: 22px;
+//       color: black;
+//       margin-bottom: 20px;
+//     }
+
+//     .detail-button {
+//       background-color: #3a632f;
+//       color: white;
+//       padding: 10px 20px;
+//       border: none;
+//       cursor: pointer;
+//       font-family: 'Bricolage Grotesque', sans-serif;
+//       transition: background-color 0.3s;
+
+//       &:hover {
+//         background-color: #2e4c1f;
+//       }
+//     }
+//   }
+
+//   .image {
+//     width: 50%;
+//     padding-left: 20px;
+//     opacity: 0;
+//     transform: translateY(30px);
+//     transition: opacity 1s ease, transform 1s ease;
+//     animation: slideUp 2s forwards; /* Animation cho ảnh */
+//   }
+
+//   @keyframes slideUp {
+//     0% {
+//       transform: translateY(30px);
+//       opacity: 0;
+//     }
+//     100% {
+//       transform: translateY(0);
+//       opacity: 1;
+//     }
+//   }
+// }
+
+// .opened-25 .left-panel {
+//   height: 25%;
+//   transform: translateY(-25%);
+// }
+
+// .opened-50 .left-panel {
+//   height: 50%;
+//   transform: translateY(-50%);
+// }
+
+// .opened-50 .right-panel {
+//   height: 50%;
+//   transform: translateY(50%);
+// }
+
+// .opened-100 .left-panel {
+//   height: 100%;
+//   transform: translateY(-100%);
+// }
+
+// .opened-100 .right-panel {
+//   height: 100%;
+//   transform: translateY(100%);
+// }
+
+// .show-creative .creative {
+//   opacity: 1;
+// }
+
+// .show-friendly .friendly {
+//   opacity: 1;
+// }
+
+// .show-content .content {
+//   opacity: 1;
+//   transform: translateY(0);
+// }
+
+// .opened-50 .background-block {
+//   opacity: 1;
+// }
+
+// .opened-50 .description .text {
+//   opacity: 1;
+//   transform: translateY(0);
+// }
+
+// .opened-50 .description .image {
+//   opacity: 1;
+//   transform: translateY(0);
+// }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&family=Homemade+Apple&family=Raleway:wght@400&display=swap');
+
+.first-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #3a632f; /* Màu xanh cho panel */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.panel {
+  position: absolute;
+  width: 50%; /* Chiều rộng panel */
+  background-color: #3a632f; /* Màu xanh */
+  z-index: 1;
+  transition: all 2s ease;
+}
+
+.left-panel {
+  top: 50%; /* Bắt đầu từ giữa */
+  left: 0;
+  height: 0; /* Chiều cao bắt đầu từ 0 */
+  transform-origin: top; /* Mở từ trên xuống */
+}
+
+.right-panel {
+  top: 50%; /* Bắt đầu từ giữa */
+  right: 0;
+  height: 0; /* Chiều cao bắt đầu từ 0 */
+  transform-origin: bottom; /* Mở từ dưới lên */
+}
+
+.opened .left-panel,
+.opened .right-panel {
+  height: 50%; /* Khi mở, chiều cao đạt 50% */
+}
+
+.title-text {
+  position: absolute;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 72px;
+  color: green;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 1.5s ease;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.creative {
+  opacity: 0;
+}
+
+.friendly {
+  opacity: 0;
+}
+
+.show-creative .creative {
+  opacity: 1;
+}
+
+.show-friendly .friendly {
+  opacity: 1;
+}
+
+.background-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.opened .background-block {
+  opacity: 1;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  opacity: 0;
+  transition: opacity 2s ease;
+  padding: 40px;
+  z-index: 3;
+  transform: translateY(30px);
+}
+
+.show-content .content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: -0px;
+
+  .logo {
+    height: 40px;
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 20px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+  }
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+
+  .text {
+    width: 50%;
+    padding-right: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+
+    .headline {
+      font-family: 'Homemade Apple', cursive;
+      font-size: 60px;
+      color: black;
+      margin-bottom: 20px;
+    }
+
+    .subheadline {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 72px;
+      color: #FFC973;
+      margin-bottom: 20px;
+    }
+
+    .paragraph {
+      font-family: 'Raleway', sans-serif;
+      font-size: 22px;
+      color: black;
+      margin-bottom: 20px;
+    }
+
+    .detail-button {
+      background-color: #3a632f;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #2e4c1f;
+      }
+    }
+  }
+
+  .image {
+    width: 50%;
+    padding-left: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+    animation: slideUp 2s forwards;
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+.opened .description .text,
+.opened .description .image {
+  opacity: 1;
+  transform: translateY(0);
+}
