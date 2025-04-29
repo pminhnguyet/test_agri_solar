@@ -7,35 +7,40 @@ import { fetchModelById } from "../utils/request";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Frame61.scss";
 
-function Model3D({ url, animate = false, onDone, moveLeft = false }) {
+function Model3D({
+  url,
+  animate = false,
+  onDone,
+  moveLeft = false,
+  animationCompleted,
+}) {
   const gltf = useGLTF(url, true);
   const model = useRef();
   const [rotationActive, setRotationActive] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
 
   const handleClick = (e) => {
+    if (!animationCompleted) return;
     e.stopPropagation();
-    setShowPopup((prev) => !prev); // Toggle popup visibility
+    setShowPopup((prev) => !prev);
   };
 
   useFrame(() => {
-    if (model.current) {
-      if (rotationActive) {
-        model.current.rotation.y += 0.002;
-      }
+    if (!model.current) return;
 
-      if (animate && model.current.position.y < 0) {
-        model.current.position.y += 0.01;
-        if (model.current.position.y >= 0) {
-          model.current.position.y = 0;
-          setRotationActive(false);
-          if (onDone) onDone();
-        }
-      }
+    if (rotationActive) model.current.rotation.y += 0.002;
 
-      if (moveLeft && model.current.position.x > 0) {
-        model.current.position.x -= 0.005;
+    if (animate && model.current.position.y < 0) {
+      model.current.position.y += 0.01;
+      if (model.current.position.y >= 0) {
+        model.current.position.y = 0;
+        setRotationActive(false);
+        onDone?.();
       }
+    }
+
+    if (moveLeft && model.current.position.x > 0) {
+      model.current.position.x -= 0.005;
     }
   });
 
@@ -55,12 +60,12 @@ function Model3D({ url, animate = false, onDone, moveLeft = false }) {
             animate={{ opacity: 1, scale: 0.6 }}
             transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
             style={{
-              width: "50px",
+              width: "40px",
               background: "white",
-              padding: "4px 6px",
+              padding: "4px 5px",
               borderRadius: "8px",
               boxShadow: "0 4px 12px rgba(3, 156, 6, 0.5)",
-              fontSize: "3.5px",
+              fontSize: "2.5px",
               color: "#333",
             }}
           >
@@ -75,53 +80,60 @@ function Model3D({ url, animate = false, onDone, moveLeft = false }) {
 export default function Frame61() {
   const title = "Giai đoạn 2";
   const subTitle = "Cây non";
-  const ref = useRef();
-  const inView = useInView(ref, { once: false });
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-20% 0px" });
 
-  const [slide, setSlide] = useState(false);
-  const [scale, setScale] = useState(0);
   const [showText, setShowText] = useState(false);
   const [animateModel, setAnimateModel] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
   const [moveLeft, setMoveLeft] = useState(false);
   const [animationFlag, setAnimationFlag] = useState(false);
+  const [animationCompleted, setAnimationCompleted] = useState(false); // State mới
 
   const [model, setModel] = useState(null);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
 
+  const textRef = useRef(null);
+  const isTextInView = useInView(textRef, {
+    triggerOnce: false,
+    threshold: 0.3,
+  });
+
   useEffect(() => {
-    async function getModel() {
+    const getModel = async () => {
       try {
         setLoading(true);
         const m = await fetchModelById(2);
         setModel(m);
-        setAnimateModel(true);
       } catch (e) {
         setErr(e.message);
         console.error("Error loading model:", e);
       } finally {
         setLoading(false);
       }
-    }
+    };
     getModel();
   }, []);
 
   useEffect(() => {
-    if (inView && !slide) {
-      const timer = setTimeout(() => setSlide(true), title.length * 50 + 500);
-      return () => clearTimeout(timer);
-    }
-  }, [inView, slide]);
+    if (inView) {
+      const timers = [];
 
-  useEffect(() => {
-    if (slide) {
-      const timer = setTimeout(() => {
-        setScale(8);
-      }, 2000);
-      return () => clearTimeout(timer);
+      timers.push(setTimeout(() => setAnimateModel(true), 300));
+      timers.push(setTimeout(() => setFadeOut(true), 2300));
+      timers.push(setTimeout(() => setMoveLeft(true), 2800));
+      timers.push(setTimeout(() => setShowText(true), 3500));
+      timers.push(
+        setTimeout(() => {
+          setAnimationFlag(true);
+          setAnimationCompleted(true); // Đánh dấu animation đã hoàn thành
+        }, 4000)
+      );
+
+      return () => timers.forEach(clearTimeout);
     }
-  }, [slide]);
+  }, [inView]);
 
   const handleModelDone = () => {
     setTimeout(() => {
@@ -130,19 +142,20 @@ export default function Frame61() {
       setTimeout(() => {
         setAnimationFlag(true);
         setShowText(true);
+        setAnimationCompleted(true); // Đánh dấu animation đã hoàn thành
       }, 2000);
     }, 200);
   };
 
   return (
-    <div className="frame61-container">
-      {/* Title  */}
+    <div className="frame61-container" ref={ref}>
+      {/* Title */}
       <motion.div
         className="frame61-text"
         animate={{ opacity: fadeOut ? 0 : 1 }}
         transition={{ duration: 1 }}
       >
-        <div ref={ref}>
+        <div>
           <h2>{title}</h2>
           <motion.div className="frame61-cay-non">
             <motion.h2>{subTitle}</motion.h2>
@@ -150,7 +163,7 @@ export default function Frame61() {
         </div>
       </motion.div>
 
-      {/*  Description */}
+      {/* Description */}
       <motion.div
         className="frame61-description"
         initial={{ opacity: 0, x: 0 }}
@@ -165,20 +178,25 @@ export default function Frame61() {
       >
         <motion.div
           className="title"
+          ref={textRef}
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isTextInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.5, ease: "easeOut" }}
           whileHover={{ scale: 1.1, color: "#039c06" }}
         >
           <span className="bricolage">Cây phát triển </span>
           <span className="roboto-italic">tự nhiên</span>
         </motion.div>
-        <p>
+        <motion.p
+          initial={{ opacity: 0, y: 50 }}
+          animate={isTextInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        >
           "Từ hạt giống, những chồi non đầu tiên đã xuất hiện! Hệ thống
           Agri-Solar cung cấp năng lượng cho tưới nhỏ giọt tự động, giúp duy trì
           độ ẩm ổn định và hỗ trợ cây non phát triển khỏe mạnh trong giai đoạn
           hình thành rễ và lá."
-        </p>
+        </motion.p>
       </motion.div>
 
       {/* Shadow */}
@@ -197,9 +215,10 @@ export default function Frame61() {
                 animate={animateModel}
                 onDone={handleModelDone}
                 moveLeft={moveLeft}
+                animationCompleted={animationCompleted} // Truyền state vào
               />
             </Suspense>
-            {animationFlag && (
+            {animationFlag && animationCompleted && (
               <OrbitControls
                 maxPolarAngle={Math.PI / 2}
                 minPolarAngle={0}

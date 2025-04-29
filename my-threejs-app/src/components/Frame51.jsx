@@ -11,12 +11,11 @@ import "../styles/Frame51.scss";
 function Model3D({ modelUrl, animate = false }) {
   const gltf = useGLTF(modelUrl, true);
   const modelRef = useRef();
-
   const [showPopup, setShowPopup] = useState(false);
 
   const handleClick = (e) => {
-    e.stopPropagation(); // Prevent event propagation
-    setShowPopup((prev) => !prev); // Toggle popup visibility
+    e.stopPropagation();
+    setShowPopup((prev) => !prev);
   };
 
   useFrame(() => {
@@ -64,18 +63,25 @@ function Model3D({ modelUrl, animate = false }) {
 
 export default function Frame51() {
   const text = "Giai đoạn 1";
-  const ref = useRef();
-  const inView = useInView(ref, { once: false });
+  const containerRef = useRef();
+  const inView = useInView(containerRef, { once: true, margin: "-20% 0px" });
 
   const [slide, setSlide] = useState(false);
   const [scale, setScale] = useState(0);
   const [showText, setShowText] = useState(false);
   const [animateModel, setAnimateModel] = useState(false);
   const [animationFlag, setAnimationFlag] = useState(false);
-
   const [model, setModel] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [animationCompleted, setAnimationCompleted] = useState(false);
+
+  const textRef = useRef(null);
+  const isTextInView = useInView(textRef, {
+    triggerOnce: false,
+    threshold: 0.3,
+  });
 
   useEffect(() => {
     async function getModel() {
@@ -92,37 +98,33 @@ export default function Frame51() {
     getModel();
   }, []);
 
+  // Handle animation sequence
   useEffect(() => {
-    if (inView && !slide) {
-      const timer = setTimeout(() => setSlide(true), text.length * 50 + 500);
-      return () => clearTimeout(timer);
-    }
-  }, [inView, slide]);
+    if (inView) {
+      const timers = [];
 
-  useEffect(() => {
-    if (slide) {
-      const scaleTimer = setTimeout(() => setScale(8), 2000);
-      const modelMoveTimer = setTimeout(() => setAnimateModel(true), 6000);
-      const textVisibleTimer = setTimeout(() => setShowText(true), 6500);
-      const endAnimationTimer = setTimeout(() => setAnimationFlag(true), 8500);
+      timers.push(setTimeout(() => setSlide(true), 300));
+      timers.push(setTimeout(() => setScale(8), 2300));
+      timers.push(setTimeout(() => setAnimateModel(true), 6300));
+      timers.push(setTimeout(() => setShowText(true), 6800));
+      timers.push(
+        setTimeout(() => {
+          setAnimationFlag(true);
+          setAnimationCompleted(true);
+        }, 8800)
+      ); // 300 + 8500
 
-      return () => {
-        clearTimeout(scaleTimer);
-        clearTimeout(modelMoveTimer);
-        clearTimeout(textVisibleTimer);
-        clearTimeout(endAnimationTimer);
-      };
+      return () => timers.forEach(clearTimeout);
     }
-  }, [slide]);
+  }, [inView]);
 
   return (
-    <div className="frame51-container">
+    <div className="frame51-container" ref={containerRef}>
       {/* Text animation */}
       <div className="frame51-text">
         <motion.div
-          ref={ref}
           initial={{ x: 800, opacity: 0 }}
-          animate={slide ? { x: -1000, opacity: 1 } : { x: 800, opacity: 0 }}
+          animate={slide ? { x: -1200, opacity: 1 } : { x: 800, opacity: 0 }}
           transition={{ duration: 6, ease: "easeInOut" }}
         >
           <motion.h2>{text}</motion.h2>
@@ -132,9 +134,14 @@ export default function Frame51() {
       {/* Description */}
       <motion.div
         className="frame51-description"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: showText ? 1 : 0 }}
-        transition={{ duration: 1.5 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={
+          showText && isTextInView
+            ? { opacity: 1, y: 0 }
+            : { opacity: 0, y: 20 }
+        }
+        transition={{ duration: 1.2 }}
+        ref={textRef}
       >
         <div className="title">Khởi đầu</div>
         <p>
@@ -164,17 +171,22 @@ export default function Frame51() {
             <ambientLight intensity={0.8} />
             <directionalLight position={[5, 5, 5]} intensity={1} />
             <Suspense fallback={null}>
-              <Model3D modelUrl={model.url} animate={animateModel} />
+              <Model3D
+                modelUrl={model.url}
+                animate={animateModel}
+                animationCompleted={animationCompleted}
+              />
             </Suspense>
-            <OrbitControls
-              enabled={animationFlag}
-              maxPolarAngle={Math.PI / 2}
-              minPolarAngle={0}
-              maxAzimuthAngle={Math.PI / 2}
-              minAzimuthAngle={-Math.PI / 2}
-              minDistance={4}
-              maxDistance={8}
-            />
+            {animationFlag && animationCompleted && (
+              <OrbitControls
+                maxPolarAngle={Math.PI / 2}
+                minPolarAngle={0}
+                maxAzimuthAngle={Math.PI / 2}
+                minAzimuthAngle={-Math.PI / 2}
+                minDistance={4}
+                maxDistance={8}
+              />
+            )}
           </Canvas>
         )}
       </div>
