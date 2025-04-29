@@ -1,0 +1,73 @@
+.frame51-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.frame51-text {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  max-width: 800px;
+  text-align: center;
+
+  h2 {
+    font-size: 6rem;
+    text-align: center;
+    font-family: "Bricolage Grotesque", sans-serif;
+    color: #3a632f;
+  }
+}
+
+.frame51-description {
+  z-index: 2;
+  position: absolute;
+  top: 25%;
+  left: 30%;
+  transform: translateX(-50%);
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: bold;
+  max-width: 400px;
+  margin-left: -190px;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #3a632f;
+    margin-bottom: 20px;
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+
+  p {
+    font-family: "Raleway", sans-serif;
+    color: #000;
+    font-weight: 300;
+  }
+}
+
+.frame51-shadow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.frame51-canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-10%, -50%);
+  width: 65%;
+  height: 100%;
+  z-index: 999;
+}
