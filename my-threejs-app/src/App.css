@@ -1,0 +1,106 @@
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+} */
+#root {
+  /* width: 100vw; */
+  height: 100vh;
+  /* background-color: #f5f5f5; */
+}
+
+.scroll-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  /* height: 300vh; */
+  /* Độ dài đủ để cuộn */
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.section {
+  width: 100vw;
+  /* height: 100vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+}
+
+
+.frame9_wrapper {
+  height: 200vh;
+  /* hoặc tùy bạn điều chỉnh theo nội dung */
+  position: relative;
+}
+
+
+.frame7_2,
+.block9_1,
+.block9_2,
+.block9_3 {
+  /* position: sticky;
+  top: 0; */
+  z-index: 1;
+}
+
+.frame7_2 {
+  z-index: 2;
+  /* Đảm bảo frame7_2 luôn hiển thị trước */
+  position: sticky;
+  top: 0;
+}
+
+.block9_1,
+.block9_2,
+.block9_3 {
+  z-index: 1;
+  /* Đảm bảo block9_1 đứng sau frame7_2 */
+  position: relative;
+}
+
+
+.section.frame7_2,
+.section.block9_1,
+.section.block9_2,
+.section.block9_3 {
+  will-change: transform;
+}

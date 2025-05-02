@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&family=Homemade+Apple&family=Raleway&display=swap');
+
+.intro-section {
+    background: url('/src/assets/images/back1.png') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.intro-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(100%, 100%);
+    animation: slideInDiagonal 1.5s ease-out forwards;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.agri-text {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 72px;
+    color: #3A632F;
+    margin: 0;
+}
+
+.what-text {
+    font-family: 'Homemade Apple', cursive;
+    font-size: 88px;
+    color: #FFC972;
+    transform: rotate(-8deg);
+    margin-top: 0rem;
+    margin-left: 2rem;
+    position: absolute;
+    bottom: -90px;
+    right: -60px;
+}
+
+.typed-text {
+    font-family: 'Raleway', sans-serif;
+    font-size: 22px;
+    color: #000;
+    margin-top: 90px;
+    max-width: 900px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+@keyframes slideInDiagonal {
+    to {
+        transform: translate(0, 0);
+    }
+}
