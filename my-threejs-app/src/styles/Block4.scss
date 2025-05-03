@@ -1,0 +1,198 @@
+// @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600&family=Raleway:wght@400;600&display=swap');
+
+// .block4-container {
+//     position: relative;
+//     width: 100%;
+//     height: 100vh;
+//     overflow: hidden;
+//     background-color: #fff;
+//     // background-image: url('/src/assets/images/back4.png');
+//     // background-size: cover;
+//     // background-position: center;
+//     display: flex;
+
+
+//     .block4-grid {
+//         width: 100%;
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         justify-content: space-around;
+//         height: 100%;
+//     }
+
+
+//     .section {
+//         width: 100%;
+//     }
+
+//     .section-title-top,
+//     .section-title-bottom {
+//         text-align: center;
+//     }
+
+//     .title-top {
+//         font-family: 'Bricolage Grotesque', sans-serif;
+//         font-size: 50px;
+//         color: #000;
+//         letter-spacing: 1px;
+//     }
+
+//     .title-bottom {
+//         font-family: 'Bricolage Grotesque', sans-serif;
+//         font-size: 50px;
+
+//         .black-text {
+//             color: #000;
+//             font-weight: 600;
+//         }
+
+//         .green-text {
+//             color: #3A632F;
+//             font-weight: 700;
+//         }
+//     }
+
+//     .content-center {
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//         width: 100%;
+//         padding: 0 5%;
+//         flex-wrap: nowrap; // để không tự động xuống dòng
+
+//         @media (max-width: 768px) {
+//             flex-direction: column;
+//             gap: 30px;
+//         }
+//     }
+
+//     .fruit-image {
+//         width: 100%;
+//         height: auto;
+//     }
+
+//     .fruit-container {
+//         width: 33.33%;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//     }
+
+//     .description {
+//         width: 66.66%;
+//         font-family: 'Raleway', sans-serif;
+//         font-size: 22px;
+//         line-height: 1.6;
+//         color: #3A632F;
+//         margin: 0;
+
+//         @media (max-width: 768px) {
+//             width: 90%;
+//             font-size: 18px;
+//             text-align: center;
+//         }
+//     }
+// }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600&family=Raleway:wght@400;600&display=swap');
+
+.block4-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #fff;
+    display: flex;
+
+    .block4-grid {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 100%;
+    }
+
+    .section {
+        width: 100%;
+    }
+
+    .section-title-top,
+    .section-title-bottom {
+        text-align: center;
+    }
+
+    .title-top {
+        font-family: 'Bricolage Grotesque', sans-serif;
+        font-size: 50px;
+        color: #000;
+        letter-spacing: 1px;
+        padding-top: 50px;
+    }
+
+    .title-bottom {
+        font-family: 'Bricolage Grotesque', sans-serif;
+        font-size: 50px;
+        margin-top: -30%;
+
+        .black-text {
+            color: #000;
+            font-weight: 600;
+        }
+
+        .green-text {
+            color: #3A632F;
+            font-weight: 700;
+        }
+    }
+
+    .content-center {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .fruit-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .fruit-image {
+        width: 60%;
+        height: auto;
+        display: block;
+        margin-top: -11%;
+    }
+
+
+
+    .description {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: 56%;
+        font-family: 'Raleway', sans-serif;
+        font-size: 25px;
+        font-weight: 600; 
+        line-height: 1.6;
+        color: #197600;
+        text-align: center;
+        z-index: 2;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: -15%;
+
+
+        @media (max-width: 768px) {
+            width: 90%;
+            font-size: 18px;
+        }
+    }
+}
