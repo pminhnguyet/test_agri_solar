@@ -1,0 +1,390 @@
+.block10 {
+    height: 150vh;
+    // background: linear-gradient(0deg, #3A632F 20%, #80CA6C 100%);
+    // background: linear-gradient(339deg, #3A632F 20%, #80CA6C 100%);
+    // background-color: #eef7e3;
+    // background-color: #f5ffea;
+    // background: url('../assets/images/Block10_background.png');
+
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 1500px; // chỉnh kích thước tùy ý
+        height: 1200px;
+        transform: translate(-50%, -50%);
+        background: url('../assets/images/shadow.png') no-repeat center center;
+        background-size: contain;
+        opacity: 0.3; // mức độ mờ
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    // đảm bảo nội dung trên ảnh
+    >* {
+        position: relative;
+        z-index: 1;
+    }
+
+    .block10_first {
+        padding-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .block10_title {
+            text-align: center;
+            margin-bottom: 10px;
+
+            .block10_title_first {
+
+                .font-primary {
+                    font-family: 'Raleway', sans-serif;
+                    // color: white;
+                    color: #3A632F;
+                    font-size: 2.5rem;
+                    font-weight: bold;
+                }
+
+                .font-secondary {
+                    font-family: "Square Peg", cursive;
+                    color: #FFC973;
+                    font-weight: 90;
+                    font-size: 70px;
+                    -webkit-text-stroke: 2px #FFC973;
+                }
+            }
+
+            .block10_subtitle {
+                font-family: 'Raleway', sans-serif;
+                font-weight: 600;
+                color: #3A632F;
+            }
+        }
+
+        .block10_description {
+            padding-left: 150px;
+            padding-right: 150px;
+            font-family: 'Raleway', sans-serif;
+            //   color: white;
+            color: #3A632F;
+            font-weight: 90;
+            font-size: 20px;
+        }
+    }
+
+
+    .block10_button {
+        flex: 1;
+    }
+
+
+    .block10_button {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0;
+        justify-content: center;
+        gap: 30px;
+
+        .slider-group {
+            width: 80%;
+            max-width: 600px;
+            /* Để slider dài hơn */
+            display: flex;
+            //flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            gap: 10px;
+
+            &:hover {
+                transform: translateY(-4px);
+            }
+
+            .slider_icon_1,
+            .slider_icon_2 {
+                align-self: flex-start;
+                margin-bottom: 10px;
+                width: 20%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                label {
+                    font-family: 'Raleway', sans-serif;
+                    font-weight: 600;
+                    font-size: 18px;
+                    color: #3A632F;
+                    margin-top: 10px;
+                }
+
+                .block11_slider_icon {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                    width: 90px;
+                    height: 90px;
+                    border-radius: 50%;
+                    border: 1px solid #3A632F;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    //transition: transform 0.3s ease, border-color 0.3s ease;
+                    animation: animate-border 2s infinite;
+                }
+
+
+
+                @keyframes animate-border {
+                    0% {
+                        border-color: rgba(58, 99, 47, 0.1);
+                    }
+
+                    50% {
+                        border-color: rgba(58, 99, 47, 1);
+                        /* Viền đậm giữa quá trình */
+                    }
+
+
+
+                    100% {
+                        border-color: rgba(58, 99, 47, 0.1);
+                    }
+
+                }
+
+
+                .icon-effect {
+                    color: #337c1f;
+                    font-size: 48px;
+
+                    animation: swing 1s ease-in-out infinite;
+                }
+
+                @keyframes swing {
+                    0% {
+                        transform: rotate(10deg);
+                        /* Bắt đầu từ góc 10 độ sang bên trái */
+                    }
+
+                    50% {
+                        transform: rotate(-10deg);
+                        /* Lắc qua bên phải */
+                    }
+
+                    100% {
+                        transform: rotate(10deg);
+                        /* Quay lại góc ban đầu */
+                    }
+                }
+
+                .icon-effect-2 {
+                    color: #337c1f;
+                    font-size: 48px;
+                    animation: rotateIcon 4s linear infinite;
+                    /* Xoay liên tục */
+                }
+
+                @keyframes rotateIcon {
+                    0% {
+                        transform: rotate(0deg);
+                        /* Bắt đầu từ góc 0 độ */
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                        /* Xoay đến 360 độ */
+                    }
+                }
+
+
+
+
+
+            }
+
+
+            .slider_icon_1:hover,
+            .slider_icon_2:hover {
+                .block11_slider_icon {
+                    border: 1px solid #33b210;
+
+                    .icon-effect,
+                    .icon-effect-2 {
+                        color: #33b210;
+                    }
+                }
+
+                label {
+                    color: #33b210;
+                }
+
+            }
+
+
+
+
+            .slider_button {
+                width: 80%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                input[type="range"] {
+                    width: 100%;
+                    /* Đảm bảo chiều rộng là 100% */
+                    appearance: none;
+                    height: 6px;
+                    border-radius: 5px;
+                    background: linear-gradient(to right, #ff6f61, #58a700, #ffca28);
+                    /* Giữ màu gradient */
+                    outline: none;
+                    margin-bottom: 10px;
+                    transition: 0.3s ease;
+
+                    &::-webkit-slider-thumb {
+                        appearance: none;
+                        width: 18px;
+                        height: 18px;
+                        border-radius: 50%;
+                        background: #3A632F;
+                        cursor: pointer;
+                        border: 2px solid #fff;
+                        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+                    }
+
+                    &::-moz-range-thumb {
+                        width: 18px;
+                        height: 18px;
+                        border-radius: 50%;
+                        background: #3A632F;
+                        cursor: pointer;
+                        border: 2px solid #fff;
+                        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+                    }
+                }
+
+                .slider-labels {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    font-size: 13px;
+                    color: #666;
+                    font-family: 'Raleway', sans-serif;
+
+                    span {
+                        flex: 1;
+                        text-align: center;
+
+                        &:nth-child(1) {
+                            color: #d32f2f;
+                            /* đỏ */
+                        }
+
+                        &:nth-child(2) {
+                            color: #388e3c;
+                            /* xanh lý tưởng */
+                            font-weight: bold;
+                        }
+
+                        &:nth-child(3) {
+                            color: #f9a825;
+                            /* vàng */
+                        }
+                    }
+                }
+            }
+        }
+
+
+        .popup {
+            // color:#3A632F;
+            color: #fff;
+            text-align: justify;
+            // background-color: #fff;
+            background: linear-gradient(200deg, #284b1e 20%, #5ec243 100%);
+            margin-left: 100px;
+            margin-right: 100px;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-family: 'Raleway', sans-serif;
+            align-items: center;
+            font-weight: 90;
+            font-size: 16px;
+            opacity: 0;
+            /* Đặt opacity ban đầu là 0 */
+            transform: scale(0.9);
+            /* Thu nhỏ một chút khi bắt đầu */
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            /* Thêm transition để hiệu ứng mượt mà */
+            animation: fadeInUp 0.6s ease-out forwards;
+            /* Hiệu ứng vào từ dưới lên */
+
+
+            p {
+                margin-bottom: 0;
+            }
+        }
+
+        .popup strong {
+            font-weight: bold;
+        }
+
+        /* Hiệu ứng fade in từ dưới lên */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+                /* Bắt đầu từ dưới */
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                /* Về vị trí ban đầu */
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .block10-canvas-part {
+        flex: 1;
+        // background-color: #fff;
+        height: 100vh;
+    }
+
+
+    .block10_middle {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        .block10_button,
+        .block10-canvas-part {
+            flex: 1 1 45%;
+        }
+
+    }
+}
